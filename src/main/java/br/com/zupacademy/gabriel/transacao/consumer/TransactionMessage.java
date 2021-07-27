@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import br.com.zupacademy.gabriel.transacao.transaction.Transaction;
+
 public class TransactionMessage {
 	
 	private String id;
@@ -25,6 +27,10 @@ public class TransactionMessage {
 
 	public String getId() {
 		return id;
+	}
+
+	public Transaction toModel() {
+		return new Transaction(this.id, this.value,this.establishment.toModel(), this.card.toModel(), this.effectedIn);
 	}
 	
 	
